@@ -4,4 +4,5 @@ class Bed < ApplicationRecord
   validates :title, presence: true
   validates :photo, presence: true
   validates :price, presence: true
+  has_many :bookings, dependent: :destroy
 end
