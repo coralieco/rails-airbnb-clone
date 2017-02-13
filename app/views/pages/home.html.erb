@@ -1,12 +1,13 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('background.jpg');">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('assets/background.jpg');">
   <div class="banner-content">
     <h1>SHARE A BED</h1>
     <p>Don't sleep alone anymore and find a warm double bed</p>
-      <%= simple_form_for(@bed) do |f| %>
-       <%= f.input :city, placeholder: "Paris" %>
-       <%= f.input :gender_preferences, collection: User::GENDER %>
-       <%= f.button :submit, class: "btn btn-primary btn-lg"  %>
-      <% end %>
+<!--       # form_for do |f|
+      # f.input :city, placeholder: "Paris", name: "city"
+      #f.input :gender_preferences, collection: User::GENDER, name: "gender"
+      #f.button :submit, class: "btn btn-primary btn-lg"
+      # end -->
+
   </div>
 </div>
 
