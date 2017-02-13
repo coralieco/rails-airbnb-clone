@@ -1,0 +1,15 @@
+
+<h3> Share your bed! Feel free to be fun and sexy! Millions of people already share their beds. Make the difference! </h3>
+
+<%= simple_form_for @bed do |f| %>
+  <%= f.input :title %>
+  <%= f.input :address %>
+  <%= f.input :zipcode %>
+  <%= f.input :city %>
+  <%= f.input :country %>
+  <%= f.input :description %>
+  <%= f.input :price %>
+  <%= f.input :photo %>
+  <%= f.submit "Share your bed", class: "btn btn-primary"%>
+
+<% end %>

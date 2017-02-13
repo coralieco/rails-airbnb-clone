@@ -55,6 +55,13 @@ GEM
     byebug (9.0.6)
     coderay (1.1.1)
     concurrent-ruby (1.0.4)
+    countries (1.2.5)
+      currencies (~> 0.4.2)
+      i18n_data (~> 0.7.0)
+    country_select (2.5.2)
+      countries (~> 1.2.0)
+      sort_alphabetical (~> 1.0)
+    currencies (0.4.2)
     debug_inspector (0.0.2)
     devise (4.2.0)
       bcrypt (~> 3.0)
@@ -72,6 +79,7 @@ GEM
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     i18n (0.8.0)
+    i18n_data (0.7.0)
     jbuilder (2.6.1)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
@@ -152,6 +160,8 @@ GEM
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
     slop (3.6.0)
+    sort_alphabetical (1.1.0)
+      unicode_utils (>= 1.2.2)
     spring (2.0.1)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -171,6 +181,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.0.4)
       execjs (>= 0.3.0, < 3)
+    unicode_utils (1.4.0)
     warden (1.2.7)
       rack (>= 1.0)
     websocket-driver (0.6.5)
@@ -185,6 +196,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
+  country_select
   devise
   figaro
   font-awesome-sass
