@@ -1,2 +1,12 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('background.jpg');">
+  <div class="banner-content">
+    <h1>SHARE A BED</h1>
+    <p>Don't sleep alone anymore and find a warm double bed</p>
+      <%= simple_form_for(@bed) do |f| %>
+       <%= f.input :city, placeholder: "Paris" %>
+       <%= f.input :gender_preferences, collection: User::GENDER %>
+       <%= f.button :submit, class: "btn btn-primary btn-lg"  %>
+      <% end %>
+  </div>
+</div>
+
