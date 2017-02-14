@@ -22,6 +22,7 @@ skip_before_action :authenticate_user!, only: [:new, :index]
 
   def show
     set_bed
+    @booking = Booking.new
   end
 
   def edit
@@ -49,7 +50,7 @@ skip_before_action :authenticate_user!, only: [:new, :index]
   end
 
   def set_bed
-      @bed = Bed.find(params[:id])
-    end
+    @bed = Bed.find(params[:id])
+  end
 
 end

@@ -1,0 +1,22 @@
+<% if @booking.status == "Pending host validation"%>
+  <p>  <strong> We are waiting for <%= @booking.bed.user.first_name %> to confirm he wants to share his bed with you</strong> </p>
+  <p> So... stay tuned! </p>
+<% end %>
+
+<h4> Reminder of your booking details </h4>
+<p>Your host is <%= @booking.bed.user.first_name %> </p>
+
+<p>Your check-in date is <%= @booking.checkin_on %></p>
+<p> Your check-out date is <%= @booking.checkout_on %> </p>
+<p>The total price for your booking is <%= (@booking.checkout_on - @booking.checkin_on).to_f * @booking.bed.price.to_f %> €</p>
+
+
+<% if @booking.status == "Pending guest request"%>
+  <%= simple_form_for(@booking) do |f| %>
+    <%= f.submit "Confirm my booking", class: "btn btn-primary"%>
+  <% end %>
+<% end %>
+
+<%= link_to "Delete booking", booking_path(@booking),
+      method: :delete,
+      data: { confirm: "Are you sure?" }%>
