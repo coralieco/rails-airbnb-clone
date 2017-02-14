@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  GENDER = %w(Girl Boy Both)
+  GENDER = %w(Woman Man Both)
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   validates :first_name, presence: true
@@ -13,4 +13,5 @@ class User < ApplicationRecord
   has_many :beds, dependent: :destroy
   has_many :bookings
   # has_many :bookings, through: :beds
+  has_attachment :photo
 end
