@@ -14,3 +14,9 @@
 
   <%= cl_image_tag(@bed.photo.path,
       width: 400, height: 300, crop: :fill) %>
+
+  <%= simple_form_for [@bed, @booking] do |f| %>
+    <%= f.input :checkin_on %>
+    <%= f.input :checkout_on %>
+    <%= f.submit "Book", class: "btn btn-primary"%>
+  <% end %>
