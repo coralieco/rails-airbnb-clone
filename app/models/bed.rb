@@ -11,7 +11,7 @@ class Bed < ApplicationRecord
   validates :country, presence: true
   validates :zipcode, presence: true
   validates :blanket_type, inclusion: { in: BLANKET,
-      message: "%{value} is not a valid blanket type" }
+      message: "%{value} is not a valid blanket type" }, presence: true
 
   has_many :bookings, dependent: :destroy
   has_attachment :photo

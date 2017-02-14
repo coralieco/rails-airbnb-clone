@@ -10,7 +10,7 @@ skip_before_action :authenticate_user!, only: :new
   def create
     @bed = Bed.create(bed_params)
     @bed.user = current_user
-    if @bed.save!
+    if @bed.save
       redirect_to bed_path(@bed)
     else
       render :new
