@@ -9,7 +9,7 @@
   <%= f.input :country, placeholder: "France" %>
   <%= f.input :description, label: "A sexy description for a warm bed", placeholder: "I live in a cosy house in the countryside. I love hugs and spending the night with strangers. My bed has high tech silk sheets and a warm pink blanket. Don't hesitate: Book a night (or more)" %>
   <%= f.input :price, label: "Price per night in €", placeholder: "48" %>
-  <%= f.input :photo, label: "Choose a nice picture for your bed" %>
+  <%= f.input :photo, as: :attachinary, label: "Choose a nice picture for your bed" %>
   <%= f.button :submit, "Share your bed", class: "btn btn-danger"%>
-
+ 
 <% end %>
