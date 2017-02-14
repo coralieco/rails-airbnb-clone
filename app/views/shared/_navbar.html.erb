@@ -1,24 +1,34 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png" %>
+    <%= image_tag "/logo.png" %>
   <% end %>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
-    <!-- Search form -->
-    <form action="" class="navbar-wagon-search">
-      <input type="text" class="navbar-wagon-search-input" placeholder="Search something">
-      <button type="submit" class="navbar-wagon-search-btn">
-        <i class="fa fa-search"></i>
-      </button>
-    </form>
-
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
-      <!-- Notification -->
+      <div>
+        <div class="dropdown">
+          <%= link_to "Host", beds_path, class: "navbar-wagon-item navbar-wagon-link dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown"%>
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <li>
+              <!-- ruby link_to "Add my bed", new_bed_path -->
+            </li>
+            <li>
+<!--               ruby link_to "Edit my bed", edit_bed_path
+ -->         </li>
+            <li>
+              <!-- ruby link_to "My next guests", bookings_path  -->
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <%= link_to "My next beds", bookings_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <!-- Profile picture and dropdown -->
       <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
         <div class="badge-container">
           <i class="fa fa-envelope-o"></i>
@@ -26,7 +36,7 @@
         </div>
       <% end %>
 
-      <!-- Profile picture and dropdown -->
+
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
@@ -37,7 +47,7 @@
               <% end %>
             </li>
             <li>
-              <%= link_to "#" do %>
+              <%= link_to root_path do %>
                 <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
               <% end %>
             </li>
@@ -50,15 +60,17 @@
         </div>
       </div>
 
+
+
     <% else %>
 
-      <!-- Login text link -->
+      <div class="navbar-wagon-item">
+      <%= link_to t(".new", default: "Add my bed"), new_bed_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-
+      <%= link_to t(".sign_up", default: "Sign Up"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      </div>
     <% end %>
 
-    <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "Post stuff"), "#", class: "navbar-wagon-item navbar-wagon-button btn" %>
   </div>
 
   <!-- Dropdown list appearing on mobile only -->
