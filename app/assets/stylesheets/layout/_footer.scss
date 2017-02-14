@@ -1,1 +1,45 @@
-// Your footer style
+#footer {
+    background: #E6E6E6;
+    padding: 20px 0;
+    color: grey;
+}
+
+.container {
+    width: 1170px;
+}
+
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#footer ul {
+    margin-top: 10px;
+}
+
+.list-inline {
+    padding-left: 0;
+    margin-left: -5px;
+    list-style: none;
+}
+
+#footer p {
+    margin-top: 17px;
+}
+
+#footer a {
+    color: grey;
+    letter-spacing: 20px;
+    transition: color 0.5s ease;
+}
+
+#footer a:hover {
+    color: #333333;
+}
+
+p {
+  margin: 0 0 10px;
+}

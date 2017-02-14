@@ -2,7 +2,7 @@
 .banner {
   color: white;
   text-align: center;
-  height: calc(100vh - 70px);
+  height: 80vh;
   background-size: cover !important;
   display: flex;
   align-items: center;
@@ -14,8 +14,16 @@
   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
 }
 .banner p {
-  font-size: 20px;
+  font-size: 26px;
   font-weight: lighter;
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 20px;
+}
+
+.btn {
+  border-radius: 10px;
+}
+
+.form-inline {
+  border-radius: 10px;
 }

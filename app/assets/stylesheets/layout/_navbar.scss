@@ -41,7 +41,8 @@
 /* Navbar standard link */
 .navbar-wagon-link {
   color: #616668;
-  font-size: 14px;
+  font-size: 18px;
+  text-decoration: none;
 }
 .navbar-wagon-link:hover {
   color: #da552f;
@@ -63,6 +64,7 @@
   color: white;
   background: #D23333;
   border-color: #ac2626;
+  text-decoration: none;
 }
 
 /* Navbar search form */
@@ -116,6 +118,7 @@
 .navbar-wagon-dropdown-menu li > a:hover {
   background: transparent !important;
   color: black !important;
+  text-decoration: none;
 }
 .navbar-wagon-dropdown-menu:before {
   content: ' ';

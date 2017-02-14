@@ -2,12 +2,18 @@
   <div class="banner-content">
     <h1>SHARE A BED</h1>
     <p>Don't sleep alone anymore and find a warm double bed</p>
-<!--       # form_for do |f|
-      # f.input :city, placeholder: "Paris", name: "city"
-      #f.input :gender_preferences, collection: User::GENDER, name: "gender"
-      #f.button :submit, class: "btn btn-primary btn-lg"
-      # end -->
 
+  <div class="search-bar">
+    <form action="/beds" class="form-inline padded">
+      <input type="text" class="form-control input-lg" placeholder="Paris">
+      <select name="" id="" class="form-control input-lg">
+        <option value="1">Boy</option>
+        <option value="2">Girl</option>
+        <option value="3">Both</option>
+      </select>
+      <input type="submit" class="btn btn-primary btn-lg" value="Search">
+    </form>
+  </div>
   </div>
 </div>
 
