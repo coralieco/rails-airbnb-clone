@@ -14,13 +14,13 @@
         <div class="dropdown">
           <%= link_to "Host", beds_path, class: "navbar-wagon-item navbar-wagon-link dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown"%>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>
-              <!-- ruby link_to "Add my bed", new_bed_path -->
+            <li class="text-center">
+              <%= link_to "Add my bed", new_bed_path %>
             </li>
-            <li>
-<!--               ruby link_to "Edit my bed", edit_bed_path
- -->         </li>
-            <li>
+            <li class="text-center">
+              <%= link_to "See my beds", my_beds_path %>
+            </li>
+            <li class="text-center">
               <!-- ruby link_to "My next guests", bookings_path  -->
             </li>
           </ul>
@@ -32,7 +32,7 @@
       <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
         <div class="badge-container">
           <i class="fa fa-envelope-o"></i>
-          <div class="badge badge-blue">3</div>
+          <div class="badge badge-red">3</div>
         </div>
       <% end %>
 
@@ -41,17 +41,17 @@
         <div class="dropdown">
           <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>
+            <li class="text-center">
               <%= link_to "#" do %>
                 <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
               <% end %>
             </li>
-            <li>
+            <li class="text-center">
               <%= link_to root_path do %>
                 <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
               <% end %>
             </li>
-            <li>
+            <li class="text-center">
               <%= link_to destroy_user_session_path, method: :delete do %>
                 <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
               <% end %>
