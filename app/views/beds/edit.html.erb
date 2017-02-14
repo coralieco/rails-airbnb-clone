@@ -1,0 +1,19 @@
+<h1>Modify your bed'description so that it is even more sexy </h1>
+<%= simple_form_for @bed do |f| %>
+  <%= f.input :title %>
+  <%= f.input :address %>
+  <%= f.input :zipcode %>
+  <%= f.input :city %>
+  <%= f.input :country %>
+  <%= f.input :description %>
+  <%= f.input :price %>
+  <%= f.input :photo %>
+  <h4>Equipments</h4>
+  <%= f.input :pillow, as: :boolean, label: "Will your guest have his own pillow?" %>
+  <%= f.input :breakfast, as: :boolean, label: "Do you serve breakfast in bed?" %>
+  <%=  f.input :blanket_type, collection: Bed::BLANKET, label: "What kind of blanket are you providing?" %>
+  <%= f.button :submit, "Modify your bed", class: "btn btn-danger"%>
+  <%= link_to "Delete #{@bed.title}", bed_path(@bed),
+      method: :delete,
+      data: { confirm: "Are you sure?" }%>
+<% end %>
