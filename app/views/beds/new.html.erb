@@ -1,15 +1,15 @@
 
-<h3> Share your bed! Feel free to be fun and sexy! Millions of people already share their beds. Make the difference! </h3>
+<h3> Share your bed! Be fun and sexy! Millions of people already share their beds. Make the difference! </h3>
 
 <%= simple_form_for @bed do |f| %>
-  <%= f.input :title %>
-  <%= f.input :address %>
-  <%= f.input :zipcode %>
-  <%= f.input :city %>
-  <%= f.input :country %>
-  <%= f.input :description %>
-  <%= f.input :price %>
-  <%= f.input :photo %>
-  <%= f.submit "Share your bed", class: "btn btn-primary"%>
+  <%= f.input :title, placeholder: "Warm bed with silk sheets" %>
+  <%= f.input :address, label: "My lovely nest is located at this address", placeholder: "36 avenue du calin" %>
+  <%= f.input :zipcode, placeholder: "49867" %>
+  <%= f.input :city, placeholder: "Bisouville" %>
+  <%= f.input :country, placeholder: "France" %>
+  <%= f.input :description, label: "A sexy description for a warm bed", placeholder: "I live in a cosy house in the countryside. I love hugs and spending the night with strangers. My bed has high tech silk sheets and a warm pink blanket. Don't hesitate: Book a night (or more)" %>
+  <%= f.input :price, label: "Price per night in €", placeholder: "48" %>
+  <%= f.input :photo, label: "Choose a nice picture for your bed" %>
+  <%= f.button :submit, "Share your bed", class: "btn btn-danger"%>
 
 <% end %>
