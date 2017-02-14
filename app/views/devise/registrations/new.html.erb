@@ -4,14 +4,14 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%=  f.input :first_name, required: true %>
-    <%=  f.input :gender, required: true %>
+    <%= f.input :first_name, required: true %>
+    <%= f.input :gender, required: true, collection: User::GENDER %>
     <%= f.input :email, required: true, autofocus: true %>
     <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
     <%= f.input :password_confirmation, required: true %>
-    <%=  f.input :gender_preferences %>
+    <%=  f.input :gender_preferences, collection: User::GENDER %>
     <%=  f.input :description %>
-    <%=  f.input :photo, required: true %>
+    <%=  f.input :photo, as: :attachinary, required: true %>
   </div>
 
   <div class="form-actions">
@@ -20,3 +20,4 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
