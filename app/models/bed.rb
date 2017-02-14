@@ -14,5 +14,6 @@ class Bed < ApplicationRecord
       message: "%{value} is not a valid blanket type" }
 
   has_many :bookings, dependent: :destroy
+  has_attachment :photo
 end
 

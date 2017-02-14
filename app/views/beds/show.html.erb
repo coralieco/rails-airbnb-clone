@@ -1,0 +1,16 @@
+<h1>Hello</h1>
+
+
+  <%= @bed.address %>
+  <%= @bed.title %>
+  <%= @bed.price %>
+  <%= @bed.description %>
+  <%= @bed.country %>
+  <%= @bed.city %>
+  <%= @bed.zipcode %>
+  <%= @bed.blanket_type %>
+  <%= @bed.pillow %>
+  <%= @bed.breakfast %>
+
+  <%= cl_image_tag(@bed.photo.path,
+      width: 400, height: 300, crop: :fill) %>

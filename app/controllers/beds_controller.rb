@@ -11,12 +11,15 @@ skip_before_action :authenticate_user!, only: :new
     @bed = Bed.create(bed_params)
     @bed.user = current_user
     if @bed.save!
-      redirect_to show_bed_path(@bed)
+      redirect_to bed_path(@bed)
     else
       render :new
     end
   end
 
+  def show
+    set_bed
+  end
 
   def edit
     set_bed
@@ -32,14 +35,14 @@ skip_before_action :authenticate_user!, only: :new
   def destroy
     set_bed
     @bed.destroy
-    redirect_to beds_path
+    redirect_to root_path
   end
 
 
   private
 
   def bed_params
-    params.require(:bed).permit(:address, :title, :photo, :price, :description, :country, :city, :zipcode)
+    params.require(:bed).permit(:address, :title, :photo, :price, :description, :country, :city, :zipcode, :photo, :blanket_type, :pillow, :breakfast)
   end
 
   def set_bed
