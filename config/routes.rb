@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
+
+  mount Attachinary::Engine => "/attachinary"
+
   devise_for :users
   resources :beds do
     resources :bookings, only: [:new, :create]

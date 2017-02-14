@@ -7,7 +7,7 @@
   <%= f.input :country %>
   <%= f.input :description %>
   <%= f.input :price %>
-  <%= f.input :photo %>
+  <%= f.input :photo, as: :attachinary%>
   <h4>Equipments</h4>
   <%= f.input :pillow, as: :boolean, label: "Will your guest have his own pillow?" %>
   <%= f.input :breakfast, as: :boolean, label: "Do you serve breakfast in bed?" %>
