@@ -13,4 +13,5 @@ class User < ApplicationRecord
   has_many :beds, dependent: :destroy
   has_many :bookings
   # has_many :bookings, through: :beds
+  has_attachment :photo
 end
