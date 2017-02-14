@@ -1,7 +1,7 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png" %>
+    <%= image_tag "/logo.png" %>
   <% end %>
 
   <!-- Right Navigation -->
@@ -10,25 +10,24 @@
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
-      <%= link_to t(".new", default: "Add My Bed"), new_bed_path, class: "navbar-wagon-item navbar-wagon-link" %>
-
       <div>
         <div class="dropdown">
-          <%= link_to t(".bookings", default: "My Dashboard"), beds_path, class: "navbar-wagon-item navbar-wagon-link dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown"%>
+          <%= link_to "Host", beds_path, class: "navbar-wagon-item navbar-wagon-link dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown"%>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-bed"></i> <%= t(".profile", default: "My next beds") %>
-              <% end %>
+              <!-- ruby link_to "Add my bed", new_bed_path -->
             </li>
             <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-users"></i>  <%= t(".profile", default: "My next guests") %>
-              <% end %>
+<!--               ruby link_to "Edit my bed", edit_bed_path
+ -->         </li>
+            <li>
+              <!-- ruby link_to "My next guests", bookings_path  -->
             </li>
           </ul>
         </div>
       </div>
+
+      <%= link_to "My next beds", bookings_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <!-- Profile picture and dropdown -->
       <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
         <div class="badge-container">
@@ -61,9 +60,12 @@
         </div>
       </div>
 
+
+
     <% else %>
 
       <div class="navbar-wagon-item">
+      <%= link_to t(".new", default: "Add my bed"), new_bed_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to t(".sign_up", default: "Sign Up"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
       </div>
