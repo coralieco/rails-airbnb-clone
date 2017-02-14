@@ -3,19 +3,23 @@
   <div class="row">
     <% @beds.each do |bed| %>
       <div class="col-xs-12 col-sm-4">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_tag(@bed.photo.path, width: 400, height: 300, crop: :thumb) %>');">
-        <div class="card-first-name"><%= bed.user.first_name %></div>
-        <div class="card-description">
-          <h2><%= bed.title %></h2>
-          <p><%= bed.city %></p>
-          <p><%= bed.price %></p>
-        </div>
-        <div class="card-user avatar" style="background-image: url('<%= cl_image_tag(@user.photo.path, width: 50, height: 50, crop: :thumb, gravity: :face) %>');">
-        <%= link_to bed_path(bed), class: "card-link" %>
+        <%= link_to bed_path(bed) do %>
+          <div class="card"
+              style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path bed.photo.path, width: 400,height: 300, crop: :thumb %>')">
+            <div class="card-first-name"><%= bed.user.first_name %></div>
+            <div class="card-description">
+              <h2><%= bed.title %></h2>
+              <p><%= bed.city %></p>
+              <p><%= bed.price %></p>
+            </div>
+            <%= cl_image_tag bed.user.photo.path, width: 50, height: 50, crop: :thumb, gravity: :face, class: "card-user avatar" %>
+            </div>
+          </div>
+        <% end %>
+
       </div>
     <% end %>
   </div>
 </div>
-
 
 
