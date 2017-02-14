@@ -1,0 +1,29 @@
+<h1> All my beds </h1>
+
+<div class="container">
+  <div class="row">
+     <div class="col-xs-12 col-sm-6">
+    <ul>
+    <% @beds.each do |bed| %>
+    <li class="padded">
+      <%= bed.title %>
+      <%= bed.address %>
+      <%= bed.city %>
+      <%= bed.country %>
+      <%= bed.zipcode %>
+      <%= bed.price %>
+      <%= bed.blanket_type %>
+      <%= cl_image_tag(bed.photo.path,
+      width: 400, height: 300, crop: :fill) %>
+      <hr>
+      <%= link_to "Edit this bed", edit_bed_path(bed), class:"btn btn-danger"%>
+    </li>
+    <% end %>
+    </ul>
+  </div>
+  </div>
+</div>
+
+
+
+
