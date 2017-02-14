@@ -1,6 +1,9 @@
 class BedsController < ApplicationController
-skip_before_action :authenticate_user!, only: :new
+skip_before_action :authenticate_user!, only: [:new, :index]
 
+  def index
+    @beds = Bed.all
+  end
 
   def new
     @bed = Bed.new
