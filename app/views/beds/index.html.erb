@@ -1,0 +1,21 @@
+
+<div class="container">
+  <div class="row">
+    <% @beds.each do |bed| %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path bed.photo, height: 300, width: 400, crop: :fill %>');">
+        <div class="card-first-name"><%= bed.user.first_name %></div>
+        <div class="card-description">
+          <h2><%= bed.title %></h2>
+          <p><%= bed.city %></p>
+          <p><%= bed.price %></p>
+        </div>
+        <div class="card-user avatar" style="background-image: url('<%= cl_image_tag("IMAGE_WITH_FACE_ID", width: 400, height: 300, crop: :thumb, gravity: :face) %>');">
+        <%= link_to bed_path(bed), class: "card-link" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+
