@@ -5,14 +5,14 @@
       <div class="col-xs-12 col-sm-4">
         <%= link_to bed_path(bed) do %>
           <div class="card"
-              style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path bed.photo.path, width: 400,height: 300, crop: :thumb %>')">
+
             <div class="card-first-name"><%= bed.user.first_name %></div>
             <div class="card-description">
               <h2><%= bed.title %></h2>
               <p><%= bed.city %></p>
               <p><%= bed.price %></p>
             </div>
-            <%= cl_image_tag bed.user.photo.path, width: 50, height: 50, crop: :thumb, gravity: :face, class: "card-user avatar" %>
+
             </div>
           </div>
         <% end %>
