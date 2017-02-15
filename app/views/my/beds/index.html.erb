@@ -1,18 +1,19 @@
-<h1> All my beds </h1>
+<h2 class="text-center">Here are all the <strong id="red-word">beds</strong> you are sharing!</h2>
 
 <div class="container">
   <div class="row">
      <div class="col-xs-12 col-sm-6">
-    <ul>
+    <ul class="list-unstyled">
     <% @beds.each do |bed| %>
-    <li class="padded">
-      <%= bed.title %>
-      <%= bed.address %>
-      <%= bed.city %>
-      <%= bed.country %>
-      <%= bed.zipcode %>
-      <%= bed.price %>
-      <%= bed.blanket_type %>
+    <li>
+      <h3><strong><%= bed.title %></strong></h3>
+      <p><%= bed.address %></p>
+      <p><%= bed.city %></p>
+      <p><%= bed.country %></p>
+      <p><%= bed.zipcode %></p>
+      <p><%= bed.price %></p>
+      <p><%= bed.blanket_type %></p>
+
       <%= cl_image_tag(bed.photo.path,
       width: 400, height: 300, crop: :fill) %>
       <hr>

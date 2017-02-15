@@ -1,30 +1,57 @@
 <h1 class="text-center">Find your <strong id="title-index">Sharer</strong> and a <strong id="title-index">comfy</strong> bed</h1>
-<div class="containerIndex">
-  <div class="row">
-    <% @beds.each do |bed| %>
-      <div class="col-xs-12 col-sm-4">
-        <%= link_to bed_path(bed) do %>
 
-          <div class="cardContainer">
-            <div class="card-image"
-                style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path bed.photo.path, width: 400,height: 300, crop: :thumb %>')">
-              <div class="card-first-name"><%= bed.user.first_name %></div>
-              <%= cl_image_tag bed.user.photo.path, width: 50, height: 50, crop: :thumb, gravity: :face, class: "card-user avatar" %>
-            </div>
-            <div class="card">
-              <div class="card-description">
-                <p><strong id="city"><%= bed.city %></strong></p>
-                <p><%= bed.title %></p>
-              </div>
-              <div class="card-price">
-                <h2> <%= bed.price %> €</h2>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      </div>
+
+<div class="container-fluid">
+
+  <div class="col-sm-7">
+    <div class="row">
+      <% @beds.each do |bed| %>
+        <div class="col-xs-12 col-sm-6">
+          <%= link_to bed_path(bed) do %>
+            <div class="cardContainer">
+              <div class="card-image"
+                  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path bed.photo.path, width: 400,height: 300, crop: :thumb %>')">
+                <div class="card-first-name"><%= bed.user.first_name %></div>
+                <%= cl_image_tag bed.user.photo.path, width: 50, height: 50, crop: :thumb, gravity: :face, class: "card-user avatar" %>
+              </div> <!-- fin card-image -->
+              <div class="card">
+                <div class="card-description">
+                  <p><strong id="city"><%= bed.city %></strong></p>
+                  <p><%= bed.title %></p>
+                </div>
+                <div class="card-price">
+                  <h2> <%= bed.price %> €</h2>
+                </div> <!-- fin card-price -->
+              </div> <!-- fin card -->
+            </div> <!-- fin cardContainer -->
+          <% end %>
+        </div> <!-- fin de col -->
+      <% end %>
+    </div>  <!-- fin du row -->
+</div> <!-- fin du col-sm-8 -->
+
+ <div class="col-sm-5">
+  <div id="map" style="width: 100%; height: 400px;"></div>
+
+  <% content_for(:after_js) do %>
+    <%= javascript_tag do %>
+      $(document).ready(function() {
+        var handler = Gmaps.build('Google');
+        handler.buildMap({ internal: { id: 'map' } }, function() {
+          markers = handler.addMarkers(<%= raw @hash.to_json %>);
+          handler.bounds.extendWith(markers);
+          handler.fitMapToBounds();
+          if (markers.length == 0) {
+            handler.getMap().setZoom(2);
+          } else if (markers.length == 1) {
+            handler.getMap().setZoom(14);
+          }
+        });
+      });
+
     <% end %>
-  </div>
+  <% end %>
+</div>
 </div>
 
 
