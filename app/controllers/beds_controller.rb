@@ -3,6 +3,14 @@ skip_before_action :authenticate_user!, only: [:new, :index]
 
   def index
     @beds = Bed.all
+
+    @beds = Bed.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@beds) do |bed, marker|
+      marker.lat bed.latitude
+      marker.lng bed.longitude
+      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+    end
   end
 
   def new
