@@ -1,25 +1,32 @@
-<h1>Let's find your next sharer which will welcome you in his warm bed with open arms!</h1>
+<h1 class="text-center">Find your <strong id="title-index">Sharer</strong> and a <strong id="title-index">comfy</strong> bed</h1>
 <div class="container">
   <div class="row">
     <% @beds.each do |bed| %>
       <div class="col-xs-12 col-sm-4">
         <%= link_to bed_path(bed) do %>
-          <div class="card"
 
-            <div class="card-first-name"><%= bed.user.first_name %></div>
-            <div class="card-description">
-              <h2><%= bed.title %></h2>
-              <p><%= bed.city %></p>
-              <p><%= bed.price %></p>
+          <div class="cardContainer">
+            <div class="card-image"
+                style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path bed.photo.path, width: 400,height: 300, crop: :thumb %>')">
+              <div class="card-first-name"><%= bed.user.first_name %></div>
+              <%= cl_image_tag bed.user.photo.path, width: 50, height: 50, crop: :thumb, gravity: :face, class: "card-user avatar" %>
             </div>
-
+            <div class="card">
+              <div class="card-description">
+                <p><strong id="city"><%= bed.city %></strong></p>
+                <p><%= bed.title %></p>
+              </div>
+              <div class="card-price">
+                <h2> <%= bed.price %> €</h2>
+              </div>
             </div>
           </div>
         <% end %>
-
       </div>
     <% end %>
   </div>
 </div>
+
+
 
 

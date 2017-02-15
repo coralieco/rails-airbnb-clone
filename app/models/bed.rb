@@ -1,5 +1,8 @@
 class Bed < ApplicationRecord
 
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+
   BLANKET = ["Wool blanket", "duvet", "sleeping bag", "none"]
 
   belongs_to :user

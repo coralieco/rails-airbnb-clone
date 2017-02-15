@@ -1,0 +1,33 @@
+<h1> Wahou ! You are so attractive. See who wants to sleep with you !  </h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <ul>
+        <% @beds.each do |bed| %>
+
+          <% bed.bookings.each do |booking| %>
+            <li class="padded">
+
+
+              <% if booking.status == "Pending host validation" %>
+                <%= cl_image_tag(booking.user.photo.path, width: 400, height: 300, crop: :fill, class: "avatar-large" ) %>
+                <p> <%= booking.user.first_name %> wants to stay with you between <%= booking.checkin_on %> and <%= booking.checkout_on %> </p>
+                <p> On top of having a great night, you will make <%= booking.value %> € </p>
+
+                <%= link_to "Accept this booking", my_booking_path(booking), method: :patch, class: "btn btn-primary"%>
+
+
+              <% elsif booking.status == "Confirmed" %>
+                <%= cl_image_tag(booking.user.photo.path, width: 400, height: 300, crop: :fill, class: "avatar-large" ) %>
+                <p> <%= booking.user.first_name %> is staying with you between <%= booking.checkin_on %> and <%= booking.checkout_on %> </p>
+                <p> On top of having a great night, you will make <%= booking.value %> € </p>
+                <p> This booking is confirmed. Prepare your bed !</p>
+              <% end %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
