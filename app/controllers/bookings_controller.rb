@@ -7,6 +7,7 @@ class BookingsController < ApplicationController
     @booking.bed = @bed
     @booking.user = current_user
     @booking.status = "Pending guest request"
+    @booking.value = (@booking.checkout_on - @booking.checkin_on).to_f * @booking.bed.price.to_f
     if @booking.save
       redirect_to booking_path(@booking)
     else
