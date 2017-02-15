@@ -1,25 +1,48 @@
-<h1>Hello</h1>
+<h1 class="text-center"><%= @bed.title %></h1>
+<div class="containerShow">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-1">
+      <div class="PhotoBedContainer">
+        <%= cl_image_tag(@bed.photo.path, width: 400, height: 300, crop: :fill) %>
+      </div>
+    </div>
 
 
-  <%= @bed.address %>
-  <%= @bed.title %>
-  <%= @bed.price %>
-  <%= @bed.description %>
-  <%= @bed.country %>
-  <%= @bed.city %>
-  <%= @bed.zipcode %>
-  <%= @bed.blanket_type %>
-  <%= @bed.pillow %>
-  <%= @bed.breakfast %>
+    <div class="col-xs-12 col-sm-4 col-sm-offset-1">
+      <div class="profilContainer">
+        <div class="profilDescription">
+          <h2><%= @bed.user.first_name %></h2>
+          <p>Sex: <%= @bed.user.gender %></p>
+          <p>Interested in <%= @bed.user.gender_preferences %></p>
+          <p><%= @bed.user.description %></p>
+        </div>
+        <%= cl_image_tag @bed.user.photo.path, width: 50, height: 50, crop: :thumb, gravity: :face, class: "photoProfil avatar-large" %>
+      </div>
+    </div>
+  </div>
 
-  <%= cl_image_tag(@bed.photo.path,
-      width: 400, height: 300, crop: :fill) %>
-
-  <%= simple_form_for [@bed, @booking] do |f| %>
-    <%= f.input :checkin_on %>
-    <%= f.input :checkout_on %>
-    <%= f.submit "Book", class: "btn btn-primary"%>
-  <% end %>
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-1">
+      <div class="DescriptionBedContainer">
+        <p> Adresse: <%= @bed.address %> <%= @bed.city %> <%= @bed.zipcode %> <%= @bed.country %></p>
+        <p> Price: <%= @bed.price %> €</p>
+        <p> Description: <%= @bed.description %></p>
+        <p> Blanket type: <%= @bed.blanket_type %></p>
+        <p> Pillow: <%= @bed.pillow %></p>
+        <p> Breakfast: <%= @bed.breakfast %></p>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-sm-offset-1">
+      <div class="bookContainer text-center">
+        <%= simple_form_for [@bed, @booking] do |f| %>
+          <%= f.input :checkin_on %>
+          <%= f.input :checkout_on %>
+          <%= f.submit "Book", class: "btn btn-danger"%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div id="static-map"></div>
 

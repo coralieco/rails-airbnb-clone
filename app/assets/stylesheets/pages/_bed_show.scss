@@ -1,0 +1,59 @@
+
+
+
+.card-image {
+  height: 175px;
+  background-size: cover !important;
+  position: relative;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  color: white;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  image-position: center;
+  background-position: center;
+}
+
+.bookContainer {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  box-shadow: 2px 4px 5px #E8F1F5;
+  border-radius: 4px;
+}
+
+.DescriptionBedContainer {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  box-shadow: 2px 4px 5px #E8F1F5;
+  border-radius: 4px;
+}
+
+.profilContainer {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  box-shadow: 2px 4px 5px #EC605F;
+  border-radius: 4px;
+  // border-color: #EC605F;
+  position: relative;
+  height: 300px;
+  // background-color: #F6F6F6;
+}
+
+.PhotoBedContainer{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  box-shadow: 2px 4px 5px #E8F1F5;
+  border-radius: 4px;
+}
+
+.photoProfil{
+  position: absolute;
+  right: 30px;
+  top: 75px;
+}
+
+.profilDescription{
+  position: absolute;
+  left: 20px;
+  top: 40px;
+  padding-left: 10px;
+}
