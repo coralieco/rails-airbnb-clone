@@ -1,22 +1,22 @@
 #wrapper {
   justify-content : space-around;
   margin-bottom: 20px;
+  background-color: white;
 }
 
 #wrapper h3 {
   font-family: 'Questrial', sans-serif;
-  color: #c9302c;
+  color: #FF494A;
 }
 
 .form-login {
    padding: 10px 10px;
-   background: #E8A8A6 ;
    border-radius: 3px;
-   box-shadow: 1px 1px 1px #ECECEC ;
    margin: 30px;
+   background-color: rgb(250, 250, 250) ;
 }
 
 .image-new {
-  max-width: 350px;
+  max-width: 550px;
   border-radius: 10px;
 }
