@@ -1,6 +1,10 @@
 @import "home";
 @import "beds_form";
 
+@import "login";
+@import "signup";
+
+
 .container {
   margin-top: 20px;
 }
@@ -8,3 +12,4 @@
 #title-index {
   color: #EC605F;
 }
+
