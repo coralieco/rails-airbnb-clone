@@ -3,6 +3,7 @@
 //= require bootstrap-sprockets
 //= require underscore
 //= require gmaps/google
+//= require bootstrap-datepicker
 //= require_tree .
 
 // app/assets/javascripts/application.js
@@ -11,3 +12,8 @@
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
 
+$(document).ready(function() {
+  $('.datepicker').datepicker({
+      weekStart: 1
+  });
+});
