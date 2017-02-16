@@ -58,7 +58,12 @@
   <%= javascript_tag do %>
      $(document).on('ready', function() {
         var handler = Gmaps.build('Google', { markers: { clusterer: undefined }});
-        handler.buildMap({ internal: { id: 'static-map' } }, function(){
+        handler.buildMap({
+        provider: {
+        scrollwheel: false,
+        zoomControl: false
+        },
+        internal: { id: 'static-map' } }, function(){
           markers = handler.addMarkers([
             {
               "lat": <%= @bed.latitude  %>,

@@ -12,7 +12,6 @@ class Bed < ApplicationRecord
   validates :price, presence: true
   validates :city, presence: true
   validates :country, presence: true
-  validates :zipcode, presence: true
   validates :blanket_type, inclusion: { in: BLANKET,
       message: "%{value} is not a valid blanket type" }, presence: true
 
