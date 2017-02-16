@@ -66,12 +66,10 @@ ActiveRecord::Schema.define(version: 20170216105543) do
   create_table "reviews", force: :cascade do |t|
     t.text     "content"
     t.integer  "rating"
-    t.integer  "user_id"
-    t.integer  "bed_id"
+    t.integer  "booking_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["bed_id"], name: "index_reviews_on_bed_id", using: :btree
-    t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
+    t.index ["booking_id"], name: "index_reviews_on_booking_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -100,6 +98,5 @@ ActiveRecord::Schema.define(version: 20170216105543) do
   add_foreign_key "beds", "users"
   add_foreign_key "bookings", "beds"
   add_foreign_key "bookings", "users"
-  add_foreign_key "reviews", "beds"
-  add_foreign_key "reviews", "users"
+  add_foreign_key "reviews", "bookings"
 end

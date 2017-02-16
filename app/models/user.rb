@@ -12,6 +12,7 @@ class User < ApplicationRecord
   validates :encrypted_password, presence: true
   has_many :beds, dependent: :destroy
   has_many :bookings
+  has_many :reviews, through: :bookings
   # has_many :bookings, through: :beds
   has_attachment :photo
 end
