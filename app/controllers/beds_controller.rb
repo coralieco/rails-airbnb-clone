@@ -31,6 +31,8 @@ skip_before_action :authenticate_user!, only: [:new, :index]
   def show
     set_bed
     @booking = Booking.new
+    @checkin = params['checkin_on']
+    @checkout = params['checkout_on']
 
     @bed = Bed.find(params[:id])
     @alert_message = "You are viewing the bed of #{@bed.user.first_name}"

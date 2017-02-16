@@ -57,11 +57,19 @@
 
     <div class="col-xs-12 col-sm-6">
       <div class="text-center">
+       <!--  <form action="/beds/:bed_id/bookings" class="form padded">
+          <input type="text" class="form-control border-radius input-lg datepicker" placeholder="Checkin" id="checkin_on">
+          <input type="text" class="form-control border-radius input-lg datepicker" placeholder="Checkout" id="checkout_on">
+          <strong>Total price: <span id="total_price"></span></strong>
+          <input type="submit" class="btn btn-danger btn-lg" value="Book">
+        </form> -->
+
         <%= simple_form_for [@bed, @booking] do |f| %>
-          <%= f.input :checkin_on %>
-          <%= f.input :checkout_on %>
+          <%= f.text_field :checkin_on, class: "datepicker checkin_on", value: @checkin%>
+          <%= f.text_field :checkout_on, class: "datepicker checkout_on", value: @checkout %>
+          <p> <strong>Total price: <span id="total_price"></span></strong></p>
           <%= f.submit "Book", class: "btn btn-danger"%>
-        <% end %>
+        <% end%>
       </div>
     </div>
   </div>
@@ -70,8 +78,19 @@
 <div id="static-map"></div>
 
 
-
 <% content_for(:after_js) do %>
+
+    <script>
+      $(".checkin_on, .checkout_on").on("change", function(e) {
+        var from = $(".checkin_on").val().split("/");
+        var to = $(".checkout_on").val().split("/");
+        var start = new Date(from[2], from[1] - 1, from[0]);
+        var end = new Date(to[2], to[1] - 1, to[0]);
+        var nb_days = Math.round((end - start)/(1000*60*60*24));
+        var total_price = nb_days * <%= @bed.price %>;
+        $("#total_price").html(total_price + " €");
+      });
+    </script>
 
     <!-- Include Dependencies of GMaps for Rails gem -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
