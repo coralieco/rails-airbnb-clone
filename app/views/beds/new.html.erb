@@ -21,7 +21,6 @@
           <%= f.error_notification %>
           <%= f.input :title, placeholder: "Warm bed with silk sheets", :label_html => { :class => "label-css"} %>
           <%= f.input :address, label: "My lovely nest is located at this address", placeholder: "36 avenue du calin" %>
-          <%= f.input :zipcode, placeholder: "49867" %>
           <%= f.input :city, placeholder: "Bisouville" %>
           <%= f.input :country, priority: ["France"] %>
           <%= f.input :description, label: "A sexy description for a warm bed", placeholder: "I live in a cosy house in the countryside. I love hugs and spending the night with strangers. My bed has high tech silk sheets and a warm pink blanket. Don't hesitate: Book a night (or more)" %>
@@ -41,7 +40,10 @@
         </div>
       </div>
 
-
-
     </div>
   </div>
+
+
+  <%= content_for(:after_js) do %>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyC8nUa2rua2jKRMY-bKdEW9GxRRh55wtIg"></script>
+  <% end %>
