@@ -14,6 +14,7 @@
 
 $(document).ready(function() {
   $('.datepicker').datepicker({
-      weekStart: 1
+    format: "dd/mm/yyyy",
+    weekStart: 1
   });
 });
