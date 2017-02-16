@@ -1,9 +1,8 @@
 #wrapper {
   justify-content : space-around;
   margin-bottom: 20px;
-
-  margin-right: 60px;
-
+  width: 50%;
+  margin: 0 auto;
 }
 
 #wrapper h3 {
@@ -16,9 +15,4 @@
    border-radius: 3px;
    margin: 30px;
    background-color: rgb(250, 250, 250) ;
-}
-
-.image-new {
-  max-width: 550px;
-  border-radius: 10px;
 }

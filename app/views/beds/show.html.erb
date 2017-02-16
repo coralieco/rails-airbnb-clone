@@ -80,6 +80,7 @@
 
 <% content_for(:after_js) do %>
 
+
     <script>
       $(".checkin_on, .checkout_on").on("change", function(e) {
         var from = $(".checkin_on").val().split("/");
@@ -93,9 +94,9 @@
     </script>
 
     <!-- Include Dependencies of GMaps for Rails gem -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-marker-clusterer/1.0.0/markerclusterer_compiled.js"></script>
-
 
   <%= javascript_tag do %>
      $(document).on('ready', function() {
@@ -121,4 +122,13 @@
 
   <% end %>
 <% end %>
+
+
+
+
+
+
+
+
+
 

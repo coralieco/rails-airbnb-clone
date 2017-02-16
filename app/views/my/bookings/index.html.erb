@@ -1,33 +1,64 @@
-<h1> Wahou ! You are so attractive. See who wants to sleep with you !  </h1>
+<div class="text-center">
+  <h2> Wahou ! You are so attractive </h2>
+  <h3>See who wants to sleep with you !</h3>
+</div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6">
-      <ul>
+<div class="wrapper-dashboard">
+
+      <ul class="list-unstyled">
         <% @beds.each do |bed| %>
 
           <% bed.bookings.each do |booking| %>
-            <li class="padded">
+            <li class="padded dashboard">
 
 
               <% if booking.status == "Pending host validation" %>
-                <%= cl_image_tag(booking.user.photo.path, width: 400, height: 300, crop: :fill, class: "avatar-large" ) %>
-                <p> <%= booking.user.first_name %> wants to stay with you between <%= booking.checkin_on %> and <%= booking.checkout_on %> </p>
-                <p> On top of having a great night, you will make <%= booking.value %> € </p>
+                <%= cl_image_tag(booking.user.photo.path, width: 400, height: 300, crop: :fill, class: "product-image hidden-xs" ) %>
 
-                <%= link_to "Accept this booking", my_booking_path(booking), method: :patch, class: "btn btn-primary"%>
+                <div class='product-body'>
 
+                  <h3> <%= booking.user.first_name %> wants to stay with you ! </h3>
+                  <p> Dates : <%= booking.checkin_on %> and <%= booking.checkout_on %> </p>
+                  <p> On top of having a great night, you will make <%= booking.value %> € </p>
+
+                 </div> <!-- end of product-body -->
+
+                  <ul class="list-inline product-controls hidden-sm hidden-xs">
+                    <li><%= link_to "Accept ", my_booking_path(booking, booking: {status: "Confirmed"}), method: :patch, class: "btn btn-success"%></li>
+                    <li><%= link_to "Decline", my_booking_path(booking, booking: {status: "Canceled"}), method: :patch, class: "btn btn-danger"%></li>
+                  </ul>
 
               <% elsif booking.status == "Confirmed" %>
-                <%= cl_image_tag(booking.user.photo.path, width: 400, height: 300, crop: :fill, class: "avatar-large" ) %>
-                <p> <%= booking.user.first_name %> is staying with you between <%= booking.checkin_on %> and <%= booking.checkout_on %> </p>
-                <p> On top of having a great night, you will make <%= booking.value %> € </p>
-                <p> This booking is confirmed. Prepare your bed !</p>
+                <%= cl_image_tag(booking.user.photo.path, width: 400, height: 300, crop: :fill, class: "product-image hidden-xs" ) %>
+
+                <div class='product-body'>
+                  <h3 class="congrat-text"> Congrats ! <%= booking.user.first_name %> is staying with you </h3>
+                  <p> Dates : <%= booking.checkin_on %> to <%= booking.checkout_on %> </p>
+                  <p> You will make : <%= booking.value %> € </p> <br>
+                  <p> Prepare your bed !</p>
+                </div>
+
+                  <ul class="list-inline product-controls hidden-sm hidden-xs">
+                    <li><p> Status </p> <p> <i class="fa fa-check-square-o icon-validate" aria-hidden="true"></i></p></li>
+                  </ul>
+
+              <% elsif booking.status == "Canceled" %>
+                <%= cl_image_tag(booking.user.photo.path, width: 400, height: 300, crop: :fill, class: "product-image hidden-xs" ) %>
+
+                <div class='product-body'>
+                  <h3 class="congrat-text"> We are so sorry... You won't stay with <%= booking.user.first_name %> </h3>
+                  <p> Dates : <%= booking.checkin_on %> to <%= booking.checkout_on %> </p>
+                </div>
+
+                  <ul class="list-inline product-controls hidden-sm hidden-xs">
+                    <li><p> Status </p> <p> <i class="fa fa-times icon-validate" aria-hidden="true"></i></p></li>
+                  </ul>
+
               <% end %>
             </li>
           <% end %>
         <% end %>
       </ul>
-    </div>
-  </div>
 </div>
+
+
