@@ -7,6 +7,11 @@
   margin-bottom: 20px;
 }
 
+.showmaincard {
+  height: 300px;
+  margin-top: 20px;
+}
+
 .card-image {
   height: 175px;
   background-size: cover !important;
@@ -17,6 +22,7 @@
   border-top-right-radius: 4px;
   image-position: center;
   background-position: center;
+
 }
 .card-user {
   position: absolute;
@@ -66,4 +72,66 @@
 
 .cardContainer:hover{
   opacity: 0.5;
+}
+
+
+.wagoncard {
+  height: 300px;
+
+  background-size: cover !important;
+  color: #999999;
+  position: relative;
+  border-top: 1px solid #DBDBDB;
+  border-bottom: 1px solid #DBDBDB;
+  border-radius: 4px
+}
+.wagoncard-user {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.wagoncard-category {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+.wagoncard-description {
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+}
+
+.wagoncard-detail {
+  position: absolute;
+  top: 50px;
+  left: 15px;
+}
+
+
+.wagoncard-description h2 {
+  font-size: 24px;
+}
+// .wagoncard-description p {
+//   font-size: 13px;
+//   }
+.wagoncard-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  z-index:2;
+  background: black;
+  opacity: 0;
+}
+.wagoncard-link:hover{
+  opacity: 0.1;
+}
+
+.wagoncard-listing-description{
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
 }
