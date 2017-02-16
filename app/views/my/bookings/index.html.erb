@@ -1,8 +1,8 @@
 <h1> Wahou ! You are so attractive. See who wants to sleep with you !  </h1>
 
 <div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6">
+  <div class="product">
+
       <ul>
         <% @beds.each do |bed| %>
 
@@ -12,6 +12,8 @@
 
               <% if booking.status == "Pending host validation" %>
                 <%= cl_image_tag(booking.user.photo.path, width: 400, height: 300, crop: :fill, class: "avatar-large" ) %>
+
+
                 <p> <%= booking.user.first_name %> wants to stay with you between <%= booking.checkin_on %> and <%= booking.checkout_on %> </p>
                 <p> On top of having a great night, you will make <%= booking.value %> € </p>
 
@@ -28,6 +30,19 @@
           <% end %>
         <% end %>
       </ul>
-    </div>
   </div>
+</div>
+
+
+<div class="product">
+  <img src="kudoz.jpg" alt="kudoz" class="product-image hidden-xs">
+  <div class='product-body'>
+    <h3>Kudoz</h3>
+    <p>Les meilleures offres d'emploi cadre sur mobile</p>
+  </div>
+  <ul class="list-inline product-controls hidden-sm hidden-xs">
+    <li><a href=""><i class="fa fa-heart"></i></a></li>
+    <li><a href=""><i class="fa fa-share"></i></a></li>
+    <li><a href=""><i class="fa fa-star"></i></a></li>
+  </ul>
 </div>
