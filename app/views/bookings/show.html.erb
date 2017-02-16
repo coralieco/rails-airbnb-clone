@@ -1,22 +1,27 @@
-<% if @booking.status == "Pending host validation"%>
-  <p>  <strong> We are waiting for <%= @booking.bed.user.first_name %> to confirm he wants to share his bed with you</strong> </p>
-  <p> So... stay tuned! </p>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="text-center">
+      <% if @booking.status == "Pending host validation"%>
+      <h2>  <strong> We are waiting for <%= @booking.bed.user.first_name %> to confirm he wants to share his bed with you</strong> </h2>
+      <h3> So... stay tuned! </h3>
+      <% end %>
+      <h2> Reminder of your <strong id="red-word">booking details</strong></h2>
+      <%= cl_image_tag @booking.bed.user.photo.path, width: 150, height: 150, crop: :thumb, class: "avatar-xlarge" %>
+      <hr>
+      <h3>Your host is <strong> <%= @booking.bed.user.first_name %> </strong></h3>
+      <h4>Your check-in date is <%= @booking.checkin_on %></h4>
+      <h4> Your check-out date is <%= @booking.checkout_on %> </h4>
+      <h4>The total price for your booking is <%= @booking.value %> €</h4>
 
-<h4> Reminder of your booking details </h4>
-<p>Your host is <%= @booking.bed.user.first_name %> </p>
 
-<p>Your check-in date is <%= @booking.checkin_on %></p>
-<p> Your check-out date is <%= @booking.checkout_on %> </p>
-<p>The total price for your booking is <%= @booking.value %> €</p>
-
-
-<% if @booking.status == "Pending guest request"%>
-  <%= simple_form_for(@booking) do |f| %>
-    <%= f.submit "Confirm my booking", class: "btn btn-primary"%>
-  <% end %>
-<% end %>
-
-<%= link_to "Delete booking", booking_path(@booking),
-      method: :delete,
-      data: { confirm: "Are you sure?" }%>
+      <% if @booking.status == "Pending guest request"%>
+      <%= simple_form_for(@booking) do |f| %>
+      <%= f.submit "Confirm my booking", class: "btn btn-danger btn-lg" %>
+      <% end %>
+      <% end %>
+      <hr>
+    <%= link_to "Back", beds_path(@bed), class:"btn btn-default btn-lg " %>
+    </div>
+  </div>
+</div>
+</div>
