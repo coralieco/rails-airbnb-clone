@@ -21,6 +21,7 @@ class BookingsController < ApplicationController
 
   def show
     set_booking
+    @bed = @booking.bed
   end
 
   def update

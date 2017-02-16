@@ -1,12 +1,22 @@
-.container {
+.container{
   width: 1170px;
+  padding-top: 30px;
+  background-size: cover !important;
 }
 
-.form-login {
+.form {
   border-radius: 3px;
-  box-shadow: 2px 4px 5px #868683;
+  padding-right: 50px;
+  padding-left: 50px;
+  background-color: white;
+  border: 0.1px solid #E6E6E6;
+  margin-right: 10px;
+  margin-left: 100px;
+  margin-top: 70px;
 }
 
-.form-login h2 {
+.form h2 {
   font-weight: bold;
+  color: #4C4C4C;
 }
+
