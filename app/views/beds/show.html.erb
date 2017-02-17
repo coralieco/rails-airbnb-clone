@@ -19,9 +19,7 @@
               <i class="fa fa-book" aria-hidden="true"></i>
               <i>" <%= @bed.user.description %> "</i>
             </div>
-
           <%= cl_image_tag @bed.user.photo.path, width: 50, height: 50, class: "wagoncard-user avatar avatar-semi" %>
-          <a class="wagoncard-link" href="#" ></a>
         </div>
       </div>
     </div>
@@ -51,8 +49,30 @@
           <i class="fa fa-times pad" aria-hidden="true"></i>
         <% end %>
       </div>
-      <p><strong>Reviews</strong></p>
 
+      <div>
+        <p><strong>Reviews</strong></p>
+        <% @bookings.each do |booking|%>
+        <ul class="list-inline">
+         <% if booking.review %>
+            <li class="list-unstyled">
+            <div class="review-chat">
+              <%= cl_image_tag booking.user.photo.path, width: 50, height: 50, crop: :thumb, gravity: :face, class: "avatar"  %>
+              <div class="review-comment">
+                <% booking.review.rating.times do %>
+                <i class="fa fa-star" aria-hidden="true" ></i>
+                <% end %>
+                <% (5- booking.review.rating).times do %>
+                  <i class="fa fa-star-o" aria-hidden="true"></i>
+                <% end %>
+                <p> <%= booking.review.content %> </p>
+              </div>
+            </div>
+            </li>
+          <% end %>
+         </ul>
+       <% end %>
+     </div>
 
     </div>
 
@@ -66,11 +86,20 @@
         </form> -->
 
         <%= simple_form_for [@bed, @booking] do |f| %>
-          <%= f.text_field :checkin_on, class: "datepicker checkin_on", value: @checkin%>
-          <%= f.text_field :checkout_on, class: "datepicker checkout_on", value: @checkout %>
-          <p> <strong>Total price: <span id="total_price"></span></strong></p>
-          <%= f.submit "Book", class: "btn btn-danger"%>
+          <div class="booking-card">
+            <div >
+            <p>From </p>
+            <%= f.text_field :checkin_on, class: "datepicker checkin_on", value: @checkin%>
+            </div>
+            <div>
+            <p> To </p>
+            <%= f.text_field :checkout_on, class: "datepicker checkout_on", value: @checkout %>
+            </div>
+            <p> <strong>Total price: <span id="total_price"></span></strong></p>
+            <%= f.submit "Book", class: "btn btn-danger"%>
+          </div>
         <% end%>
+
       </div>
     </div>
   </div>
