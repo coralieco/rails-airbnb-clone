@@ -7,7 +7,11 @@ class BookingsController < ApplicationController
     @booking.bed = @bed
     @booking.user = current_user
     @booking.status = "Pending host validation"
-    @booking.value = (@booking.checkout_on - @booking.checkin_on).to_f * @booking.bed.price.to_f
+    if @booking.checkout_on && @booking.checkin_on
+      @booking.value = (@booking.checkout_on - @booking.checkin_on).to_f * @booking.bed.price.to_f
+    else
+      @booking.value = 0
+    end
     if @booking.save
       redirect_to booking_path(@booking)
     else
