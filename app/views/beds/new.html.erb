@@ -2,8 +2,8 @@
 
 <div id="wrapper">
   <div class="row">
-    <div class="text-center form-login">
-      <h2><strong>Add my Bed </strong></h2>
+    <div class="text-left form-login">
+      <h2 class="text-center"><strong>Add my Bed </strong></h2>
       <br>
       <%= simple_form_for @bed do |f| %>
       <%= f.error_notification %>
@@ -24,7 +24,7 @@
       <%= f.input :blanket_type, collection: Bed::BLANKET, label: "What kind of blanket are you providing?" %>
       <br>
       <hr>
-      <%= f.button :submit, "Share my bed", class: "btn btn-danger"%>
+      <%= f.button :submit, "Share my bed", class: "btn btn-danger btn-lg"%>
 
       <% end %>
     </div>
