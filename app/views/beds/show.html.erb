@@ -78,14 +78,8 @@
 
     <div class="col-xs-12 col-sm-6">
       <div class="text-center">
-       <!--  <form action="/beds/:bed_id/bookings" class="form padded">
-          <input type="text" class="form-control border-radius input-lg datepicker" placeholder="Checkin" id="checkin_on">
-          <input type="text" class="form-control border-radius input-lg datepicker" placeholder="Checkout" id="checkout_on">
-          <strong>Total price: <span id="total_price"></span></strong>
-          <input type="submit" class="btn btn-danger btn-lg" value="Book">
-        </form> -->
-
         <%= simple_form_for [@bed, @booking] do |f| %>
+
           <div class="booking-card">
             <div >
             <p>From </p>
@@ -95,9 +89,10 @@
             <p> To </p>
             <%= f.text_field :checkout_on, class: "datepicker checkout_on", value: @checkout %>
             </div>
-            <p> <strong>Total price: <span id="total_price"></span></strong></p>
+            <p> <strong>Total price: <span id="total_price"><%= @total_price %> €</span></strong></p>
             <%= f.submit "Book", class: "btn btn-danger"%>
           </div>
+
         <% end%>
 
       </div>
