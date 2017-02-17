@@ -2,7 +2,7 @@
   <h2>All my stays</h2>
 </div>
 <div class="text-center padded">
-  <h3>MY FUTURE NIGHTS</h3>
+  <h4>MY FUTURE NIGHTS</h4>
 </div>
 
 <div class="wrapper-dashboard">
@@ -65,7 +65,7 @@
 
 
 <div class="text-center">
-  <h3>MY PAST NIGHTS</h3>
+  <h4>MY PAST NIGHTS</h4>
 </div>
 
 <div class="wrapper-dashboard">
@@ -84,7 +84,7 @@
       <div>
         <% if booking.review %>
         <div class="text-center">
-        <div class="review-comment">
+        <div class="review-coment">
          <% booking.review.rating.times do %>
          <i class="fa fa-star" aria-hidden="true" ></i>
          <% end %>
@@ -95,8 +95,10 @@
        </div>
        </div>
        <%  else %>
+       <div class="text-center review">
        <h3 class="text-center">Leave a review?</h3>
        <%= render 'reviews/form', booking: booking, review: @review %>
+       </div>
        <% end %>
      </div>
      <% end %>
