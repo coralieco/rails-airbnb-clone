@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.booking = @booking
     @review.save
-    redirect_to my_bookings_path
+    redirect_to bookings_path
   end
 
   private
@@ -20,3 +20,4 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(:content, :rating)
   end
 end
+

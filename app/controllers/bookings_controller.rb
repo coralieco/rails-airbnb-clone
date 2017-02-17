@@ -21,6 +21,7 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = Booking.where(user_id: current_user.id)
+    @review = Review.new
   end
 
   def show

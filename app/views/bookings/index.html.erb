@@ -6,19 +6,44 @@
   <% if booking.checkin_on > Date.today %>
     <%= booking.bed.title %>
     <%= booking.bed.city %>
-      <% if booking.status == "Pending host validation" %>
-      <p>Wait for your host to confirm. Stay tuned !</p>
-        <%= link_to "Delete this booking", booking_path(booking), method: :delete, class:"btn btn-danger", data: {confirm: "Are you sure"} %>
-      <% end %>
-      <% if booking.status == "Confirmed" %>
+    <% if booking.status == "Pending host validation" %>
+    <p>Wait for your host to confirm. Stay tuned !</p>
+      <%= link_to "Delete this booking", booking_path(booking), method: :delete, class:"btn btn-danger", data: {confirm: "Are you sure"} %>
+    <% end %>
+    <% if booking.status == "Confirmed" %>
       <p>Your booking is confirmed</p>
-        <%= link_to "Delete this booking", booking_path(booking), method: :destroy, class:"btn btn-danger", data: {confirm: "Are you sure"} %>
-        <% end %>
-        <% if booking.status == "Canceled" %>
-        <p><%= booking.bed.user.first_name%> canceled your booking </p>
-        <% end %>
+      <%= link_to "Delete this booking", booking_path(booking), method: :destroy, class:"btn btn-danger", data: {confirm: "Are you sure"} %>
+    <% end %>
+    <% if booking.status == "Canceled" %>
+      <p><%= booking.bed.user.first_name%> canceled your booking </p>
+    <% end %>
   <% end %>
 <% end %>
 
 <h3>Past</h3>
+
+<% @bookings.each do |booking| %>
+  <% if booking.checkin_on < Date.today %>
+    <%= booking.bed.title %>
+    <%= booking.bed.city %>
+    <% if booking.status == "Pending host validation" %>
+      <p>Wait for your host to confirm. Stay tuned !</p>
+      <%= link_to "Delete this booking", booking_path(booking), method: :delete, class:"btn btn-danger", data: {confirm: "Are you sure"} %>
+    <% end %>
+    <% if booking.status == "Confirmed" %>
+      <p>Your booking is confirmed</p>
+      <%= link_to "Delete this booking", booking_path(booking), method: :destroy, class:"btn btn-danger", data: {confirm: "Are you sure"} %>
+      <% if booking.review %>
+        <%= booking.review.content %>
+        <%=  booking.review.rating  %>
+      <%  else %>
+        <p>Leave a review?</p>
+        <%= render 'reviews/form', booking: booking, review: @review %>
+      <% end %>
+    <% end %>
+    <% if booking.status == "Canceled" %>
+      <p><%= booking.bed.user.first_name%> canceled your booking </p>
+    <% end %>
+  <% end %>
+<% end %>
 
