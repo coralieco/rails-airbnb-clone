@@ -25,7 +25,7 @@
   <div class="row">
     <% @beds.last(6).each do |bed| %>
       <div class="col-xs-12 col-sm-6 col-md-4">
-        <%= link_to bed_path(bed,checkin_on: params[:checkin], checkout_on: params[:checkout]) do %>
+        <%= link_to bed_path(bed) do %>
           <div class="cardContainer">
             <div class="card-image"
                 style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path bed.photo.path, width: 400,height: 300, crop: :thumb %>')">
