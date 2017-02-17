@@ -2,16 +2,25 @@
   <div class="row">
     <div class="text-center">
       <% if @booking.status == "Pending host validation"%>
-      <h2>  <strong> We are waiting for <%= @booking.bed.user.first_name %> to confirm he wants to share his bed with you</strong> </h2>
+      <h3>  <strong> We are waiting for <%= @booking.bed.user.first_name %> to confirm your request </strong> </h3>
       <h3> So... stay tuned! </h3>
       <% end %>
-      <h2> Reminder of your <strong id="red-word">booking details</strong></h2>
-      <%= cl_image_tag @booking.bed.user.photo.path, width: 150, height: 150, crop: :thumb, class: "avatar-xlarge" %>
-      <hr>
-      <h3>Your host is <strong> <%= @booking.bed.user.first_name %> </strong></h3>
-      <h4>Your check-in date is <%= @booking.checkin_on %></h4>
-      <h4> Your check-out date is <%= @booking.checkout_on %> </h4>
-      <h4>The total price for your booking is <%= @booking.value %> €</h4>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <%= cl_image_tag @booking.bed.user.photo.path, width: 150, height: 150, crop: :thumb, class: "avatar-xlarge" %>
+          </div>
+          <div class="col-md-6">
+            <h2> Reminder of your <strong id="red-word">booking details</strong></h2>
+            <hr>
+            <h3>Your host is <strong> <%= @booking.bed.user.first_name %> </strong></h3>
+            <h4>Your check-in date is <%= @booking.checkin_on %></h4>
+            <h4> Your check-out date is <%= @booking.checkout_on %> </h4>
+            <h4>The total price for your booking is <%= @booking.value %> €</h4>
+          </div>
+        </div>
+      </div>
 
 
       <% if @booking.status == "Pending guest request"%>
