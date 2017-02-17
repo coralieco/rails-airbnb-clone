@@ -1,49 +1,41 @@
 <h2 class="text-center">Share your <strong id="red-word">bed</strong> with the community. Be <strong id="red-word">fun</strong> and <strong id="red-word">sexy</strong> ! </h2>
 
 <div id="wrapper">
-
   <div class="row">
-    <div class="col-md-6 col-xs-12">
+    <div class="text-center form-login">
+      <h2><strong>Add my Bed </strong></h2>
+      <br>
+      <%= simple_form_for @bed do |f| %>
+      <%= f.error_notification %>
+      <%= f.input :title, placeholder: "Warm bed with silk sheets", :label_html => { :class => "label-css"} %>
+      <%= f.input :address, label: "My lovely nest is located at this address", placeholder: "36 avenue du calin" %>
+      <%= f.input :city, placeholder: "Bisouville" %>
+      <%= f.input :country, priority: ["France"] %>
+      <%= f.input :description, label: "A sexy description for a warm bed", placeholder: "I live in a cosy house in the countryside. I love hugs and spending the night with strangers. My bed has high tech silk sheets and a warm pink blanket. Don't hesitate: Book a night (or more)" %>
+      <%= f.input :price, label: "Price per night in €", placeholder: "48" %>
+      <br>
+      <%= f.input :photo, as: :attachinary, label: "Choose a nice picture for your bed" %>
+      <br>
+      <hr>
+      <h4><strong>EQUIPEMENTS</strong> </h4>
+      <br>
+      <%= f.input :pillow, as: :boolean, label: "Providing a pillow?" %>
+      <%= f.input :breakfast, as: :boolean, label: "Serving breakfast in bed?" %>
+      <%= f.input :blanket_type, collection: Bed::BLANKET, label: "What kind of blanket are you providing?" %>
+      <br>
+      <hr>
+      <%= f.button :submit, "Share my bed", class: "btn btn-danger"%>
 
-      <div class="text-center padded">
-        <h3>
-          Millions of people already share their beds. <br>
-          Make the difference ! </h3>
-        <%= image_tag "/feet.jpg", class: "image-new" %>
-        </div>
-      </div>
-    <div class="col-md-6 col-xs-12">
-    <br>
-        <div class="text-center form-login">
-        <h2><strong>Add my Bed </strong></h2>
-        <br>
-          <%= simple_form_for @bed do |f| %>
-          <%= f.error_notification %>
-          <%= f.input :title, placeholder: "Warm bed with silk sheets", :label_html => { :class => "label-css"} %>
-          <%= f.input :address, label: "My lovely nest is located at this address", placeholder: "36 avenue du calin" %>
-          <%= f.input :city, placeholder: "Bisouville" %>
-          <%= f.input :country, priority: ["France"] %>
-          <%= f.input :description, label: "A sexy description for a warm bed", placeholder: "I live in a cosy house in the countryside. I love hugs and spending the night with strangers. My bed has high tech silk sheets and a warm pink blanket. Don't hesitate: Book a night (or more)" %>
-          <%= f.input :price, label: "Price per night in €", placeholder: "48" %>
-          <br>
-          <%= f.input :photo, as: :attachinary, label: "Choose a nice picture for your bed" %>
-          <br>
-          <h4>Equipments</h4>
-          <%= f.input :pillow, as: :boolean, label: "Providing a pillow?" %>
-          <%= f.input :breakfast, as: :boolean, label: "Serving breakfast in bed?" %>
-          <%= f.input :blanket_type, collection: Bed::BLANKET, label: "What kind of blanket are you providing?" %>
-          <br>
-          <hr>
-          <%= f.button :submit, "Share my bed", class: "btn btn-danger"%>
-
-          <% end %>
-        </div>
-      </div>
-
+      <% end %>
     </div>
   </div>
 
+</div>
+</div>
 
-  <%= content_for(:after_js) do %>
-    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyC8nUa2rua2jKRMY-bKdEW9GxRRh55wtIg"></script>
-  <% end %>
+
+<%= content_for(:after_js) do %>
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyC8nUa2rua2jKRMY-bKdEW9GxRRh55wtIg"></script>
+<% end %>
+
+</div>

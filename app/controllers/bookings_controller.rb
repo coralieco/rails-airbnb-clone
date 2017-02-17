@@ -6,7 +6,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.bed = @bed
     @booking.user = current_user
-    @booking.status = "Pending guest request"
+    @booking.status = "Pending host validation"
     @booking.value = (@booking.checkout_on - @booking.checkin_on).to_f * @booking.bed.price.to_f
     if @booking.save
       redirect_to booking_path(@booking)
@@ -16,7 +16,7 @@ class BookingsController < ApplicationController
   end
 
   def index
-
+    @bookings = Booking.where(user_id: current_user.id)
   end
 
   def show
