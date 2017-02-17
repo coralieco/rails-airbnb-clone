@@ -1,49 +1,114 @@
-<h2>My bookings</h2>
+<div class="text-center">
+  <h2>All my stays</h2>
+</div>
+<div class="text-center padded">
+  <h3>MY FUTURE NIGHTS</h3>
+</div>
 
-<h3>Next</h3>
+<div class="wrapper-dashboard">
+  <ul class="list-unstyled">
 
-<% @bookings.each do |booking| %>
-  <% if booking.checkin_on > Date.today %>
-    <%= booking.bed.title %>
-    <%= booking.bed.city %>
-    <% if booking.status == "Pending host validation" %>
-    <p>Wait for your host to confirm. Stay tuned !</p>
-      <%= link_to "Delete this booking", booking_path(booking), method: :delete, class:"btn btn-danger", data: {confirm: "Are you sure"} %>
-    <% end %>
-    <% if booking.status == "Confirmed" %>
-      <p>Your booking is confirmed</p>
-      <%= link_to "Delete this booking", booking_path(booking), method: :destroy, class:"btn btn-danger", data: {confirm: "Are you sure"} %>
-    <% end %>
-    <% if booking.status == "Canceled" %>
-      <p><%= booking.bed.user.first_name%> canceled your booking </p>
-    <% end %>
-  <% end %>
-<% end %>
-
-<h3>Past</h3>
-
-<% @bookings.each do |booking| %>
-  <% if booking.checkin_on < Date.today %>
-    <%= booking.bed.title %>
-    <%= booking.bed.city %>
-    <% if booking.status == "Pending host validation" %>
-      <p>Wait for your host to confirm. Stay tuned !</p>
-      <%= link_to "Delete this booking", booking_path(booking), method: :delete, class:"btn btn-danger", data: {confirm: "Are you sure"} %>
-    <% end %>
-    <% if booking.status == "Confirmed" %>
-      <p>Your booking is confirmed</p>
-      <%= link_to "Delete this booking", booking_path(booking), method: :destroy, class:"btn btn-danger", data: {confirm: "Are you sure"} %>
-      <% if booking.review %>
-        <%= booking.review.content %>
-        <%=  booking.review.rating  %>
-      <%  else %>
-        <p>Leave a review?</p>
-        <%= render 'reviews/form', booking: booking, review: @review %>
+    <% @bookings.each do |booking| %>
+    <li class="dashboard">
+      <% if booking.checkin_on > Date.today %>
+      <% if booking.status == "Pending host validation" %>
+      <%= cl_image_tag(booking.bed.photo.path, width: 400, height: 300, crop: :fill, class: "pdt-image hidden-xs" ) %>
+      <div class='product-body'>
+        <h2><%= booking.bed.title %></h2>
+        <p>City: <strong><%= booking.bed.city %></strong></p>
+        <p>Address: <strong><%= booking.bed.address %></strong></p>
+        <p>Total price: <strong><%= booking.value %> €</strong></p>
+      </div>
+      <div>
+        <ul class="list-unstyled hidden-sm hidden-xs padded">
+          <li><strong>Wait for your host to confirm. Stay tuned !</strong></li>
+          <li class="text-right"><%= link_to "Delete this booking", booking_path(booking), method: :delete, class:"btn btn-default", data: {confirm: "Are you sure"} %></li>
+        </ul>
+      </div>
       <% end %>
+
+      <% if booking.status == "Confirmed" %>
+      <%= cl_image_tag(booking.bed.photo.path, width: 400, height: 300, crop: :fill, class: "pdt-image hidden-xs" ) %>
+      <div class='product-body'>
+        <h2><%= booking.bed.title %></h2>
+        <p>City: <strong><%= booking.bed.city %></strong></p>
+        <p>Address: <strong><%= booking.bed.address %></strong></p>
+        <p>Total price: <strong><%= booking.value %> €</strong></p>
+      </div>
+      <div>
+        <ul class="list-unstyled hidden-sm hidden-xs padded">
+          <li><strong>Your booking is confirmed !</strong></li>
+          <li class="text-right"><%= link_to "Delete this booking", booking_path(booking), method: :delete, class:"btn btn-default", data: {confirm: "Are you sure"} %> </li>
+        </ul>
+      </div>
+      <% end %>
+
+      <% if booking.status == "Canceled" %>
+      <%= cl_image_tag(booking.bed.photo.path, width: 400, height: 300, crop: :fill, class: "pdt-image hidden-xs" ) %>
+      <div class='product-body'>
+        <h2><%= booking.bed.title %></h2>
+        <p>City: <strong><%= booking.bed.city %></strong></p>
+        <p>Address: <strong><%= booking.bed.address %></strong></p>
+        <p>Total price: <strong><%= booking.value %> €</strong></p>
+      </div>
+      <div>
+        <ul class="list-unstyled hidden-sm hidden-xs padded">
+          <li><p><%= booking.bed.user.first_name%> canceled your booking </p></li>
+        </ul>
+      </div>
+      <% end %>
+      <% end %>
+    </li>
     <% end %>
-    <% if booking.status == "Canceled" %>
+  </ul>
+</div>
+
+
+<div class="text-center">
+  <h3>MY PAST NIGHTS</h3>
+</div>
+
+<div class="wrapper-dashboard">
+  <ul class="list-unstyled">
+    <% @bookings.each do |booking| %>
+    <li class="dashboard">
+      <% if booking.checkin_on <= Date.today %>
+      <% if booking.status == "Confirmed" %>
+      <%= cl_image_tag(booking.bed.photo.path, width: 400, height: 300, crop: :fill, class: "pdt-image hidden-xs" ) %>
+      <div class='product-body'>
+        <h2><%= booking.bed.title %></h2>
+        <p>City: <strong><%= booking.bed.city %></strong></p>
+        <p>Address: <strong><%= booking.bed.address %></strong></p>
+        <p>Total price: <strong><%= booking.value %> €</strong></p>
+      </div>
+      <div>
+        <% if booking.review %>
+        <div class="text-center">
+        <div class="review-comment">
+         <% booking.review.rating.times do %>
+         <i class="fa fa-star" aria-hidden="true" ></i>
+         <% end %>
+         <% (5- booking.review.rating).times do %>
+         <i class="fa fa-star-o" aria-hidden="true"></i>
+         <% end %>
+         <p> <%= booking.review.content %> </p>
+       </div>
+       </div>
+       <%  else %>
+       <h3 class="text-center">Leave a review?</h3>
+       <%= render 'reviews/form', booking: booking, review: @review %>
+       <% end %>
+     </div>
+     <% end %>
+     <% if booking.status == "Canceled" %>
+     <div class='product-body'>
       <p><%= booking.bed.user.first_name%> canceled your booking </p>
+    </div>
     <% end %>
+    <% end %>
+  </li>
   <% end %>
-<% end %>
+</ul>
+</div>
+
 
