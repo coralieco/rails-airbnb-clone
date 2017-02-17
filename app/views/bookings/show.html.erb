@@ -2,25 +2,38 @@
   <div class="row">
     <div class="text-center">
       <% if @booking.status == "Pending host validation"%>
-      <h3>  <strong> We are waiting for <%= @booking.bed.user.first_name %> to confirm your request </strong> </h3>
+      <h3>  <strong><i class="fa fa-star" aria-hidden="true"></i> We are waiting for <%= @booking.bed.user.first_name %> to confirm your request </strong> <i class="fa fa-star" aria-hidden="true"></i></h3>
       <h3> So... stay tuned! </h3>
       <% end %>
+      <hr>
 
-      <div class="container">
         <div class="row">
           <div class="col-md-6">
             <%= cl_image_tag @booking.bed.user.photo.path, width: 150, height: 150, crop: :thumb, class: "avatar-xlarge" %>
           </div>
           <div class="col-md-6">
-            <h2> Reminder of your <strong id="red-word">booking details</strong></h2>
-            <hr>
-            <h3>Your host is <strong> <%= @booking.bed.user.first_name %> </strong></h3>
-            <h4>Your check-in date is <%= @booking.checkin_on %></h4>
-            <h4> Your check-out date is <%= @booking.checkout_on %> </h4>
-            <h4>The total price for your booking is <%= @booking.value %> €</h4>
+              <div class="text-left">
+              <h4> Reminder of your <strong id="red-word">booking details</strong></h4>
+              <br>
+                <table>
+                 <tbody>
+                    <tr>
+                      <td> <h4><i class="fa fa-heart" aria-hidden="true"></i> </h4></td>
+                      <td><h4> &nbsp; Your host is <strong> <%= @booking.bed.user.first_name %> </strong></h4></td>
+                    </tr>
+                    <tr>
+                      <td><h4> <i class="fa fa-bed" aria-hidden="true"></i></h4></td>
+                      <td><h4> &nbsp; You asked to join a warm bed from : <br>  &nbsp;   <%= @booking.checkin_on %> to <%= @booking.checkout_on %> </h4></td>
+                    </tr>
+                    <tr>
+                      <td><h4> <i class="fa fa-thumbs-up" aria-hidden="true"></i></h4></td>
+                      <td><h4> &nbsp; The total price for your booking is <%= @booking.value %> €</h4></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
           </div>
         </div>
-      </div>
 
 
       <% if @booking.status == "Pending guest request"%>
