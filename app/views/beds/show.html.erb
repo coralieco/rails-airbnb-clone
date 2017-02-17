@@ -1,44 +1,75 @@
 <h1 class="text-center"><%= @bed.title %></h1>
-<div class="containerShow">
+
+<div class="container">
+
   <div class="row">
-    <div class="col-xs-12 col-sm-4 col-sm-offset-1">
-      <div class="PhotoBedContainer">
-        <%= cl_image_tag(@bed.photo.path, width: 400, height: 300, crop: :fill) %>
-      </div>
-    </div>
-
-
-    <div class="col-xs-12 col-sm-4 col-sm-offset-1">
-      <div class="profilContainer">
-        <div class="profilDescription">
-          <h2><%= @bed.user.first_name %></h2>
-          <p>Sex: <%= @bed.user.gender %></p>
-          <p>Interested in <%= @bed.user.gender_preferences %></p>
-          <p><%= @bed.user.description %></p>
+    <div class ="photo-row">
+      <div class="col-xs-12 col-sm-6">
+        <div class="card showmaincard"
+        style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @bed.photo.path, height: 300, width: 400, crop: :fill %>')">
         </div>
-        <%= cl_image_tag @bed.user.photo.path, width: 50, height: 50, crop: :thumb, gravity: :face, class: "photoProfil avatar-large" %>
+      </div>
+
+      <div class="col-xs-12 col-sm-6">
+        <div class="wagoncard showmaincard">
+          <div class="wagoncard-category"> <strong> <%= @bed.user.first_name %> </strong> </div>
+          <div class="wagoncard-detail">
+            <p>Sex: <strong> <%= @bed.user.gender %> </strong> </p>
+            <p>Interested in: <strong> <%= @bed.user.gender_preferences %> </strong> </p>
+          </div>
+          <div class="wagoncard-description">
+            <i class="fa fa-book" aria-hidden="true"></i>
+            <i>" <%= @bed.user.description %> "</i>
+          </div>
+          <%= cl_image_tag @bed.user.photo.path, width: 50, height: 50, class: "wagoncard-user avatar avatar-semi" %>
+          <a class="wagoncard-link" href="#" ></a>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-xs-12 col-sm-4 col-sm-offset-1">
-      <div class="DescriptionBedContainer">
-        <p> Adresse: <%= @bed.address %> <%= @bed.city %> <%= @bed.zipcode %> <%= @bed.country %></p>
-        <p> Price: <%= @bed.price %> €</p>
-        <p> Description: <%= @bed.description %></p>
-        <p> Blanket type: <%= @bed.blanket_type %></p>
-        <p> Pillow: <%= @bed.pillow %></p>
-        <p> Breakfast: <%= @bed.breakfast %></p>
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-4 col-sm-offset-1">
-      <div class="bookContainer text-center">
-        <%= simple_form_for [@bed, @booking] do |f| %>
-          <%= f.input :checkin_on %>
-          <%= f.input :checkout_on %>
-          <%= f.submit "Book", class: "btn btn-danger"%>
+    <div class="col-xs-12 col-sm-6">
+
+      <p> <i class="fa fa-map-marker" aria-hidden="true"></i> <%= @bed.address %> <%= @bed.city %> <%= @bed.country %></p>
+      <p> <i class="fa fa-eur" aria-hidden="true"></i> <%= @bed.price %> ... but a lot of love</p>
+      <p> <strong>Description:</strong> </p>
+      <p><%= @bed.description %></p>
+      <div class = "equipment-div">
+        <p><strong>Equipments</strong></p>
+        <i class="fa fa-bed pad" aria-hidden="true"> <%= @bed.blanket_type %>  </i>
+        <%= image_tag "pillow.jpg", class: "equipment" %>
+          <% if @bed.pillow %>
+            <i class="fa fa-check pad" aria-hidden="true"></i>
+          <% else %>
+            <i class="fa fa-times pad" aria-hidden="true"></i>
+          <% end %>
+
+        <i class="fa fa-coffee fa-lg " aria-hidden="true" ></i>
+        <% if @bed.breakfast %>
+          <i class="fa fa-check pad" aria-hidden="true"></i>
+        <% else %>
+          <i class="fa fa-times pad" aria-hidden="true"></i>
         <% end %>
+      </div>
+
+    </div>
+
+    <div class="col-xs-12 col-sm-6">
+      <div class="text-center">
+       <!--  <form action="/beds/:bed_id/bookings" class="form padded">
+          <input type="text" class="form-control border-radius input-lg datepicker" placeholder="Checkin" id="checkin_on">
+          <input type="text" class="form-control border-radius input-lg datepicker" placeholder="Checkout" id="checkout_on">
+          <strong>Total price: <span id="total_price"></span></strong>
+          <input type="submit" class="btn btn-danger btn-lg" value="Book">
+        </form> -->
+
+        <%= simple_form_for [@bed, @booking] do |f| %>
+          <%= f.text_field :checkin_on, class: "datepicker checkin_on", value: @checkin%>
+          <%= f.text_field :checkout_on, class: "datepicker checkout_on", value: @checkout %>
+          <p> <strong>Total price: <span id="total_price"></span></strong></p>
+          <%= f.submit "Book", class: "btn btn-danger"%>
+        <% end%>
       </div>
     </div>
   </div>
@@ -47,18 +78,35 @@
 <div id="static-map"></div>
 
 
-
 <% content_for(:after_js) do %>
 
+
+    <script>
+      $(".checkin_on, .checkout_on").on("change", function(e) {
+        var from = $(".checkin_on").val().split("/");
+        var to = $(".checkout_on").val().split("/");
+        var start = new Date(from[2], from[1] - 1, from[0]);
+        var end = new Date(to[2], to[1] - 1, to[0]);
+        var nb_days = Math.round((end - start)/(1000*60*60*24));
+        var total_price = nb_days * <%= @bed.price %>;
+        $("#total_price").html(total_price + " €");
+      });
+    </script>
+
     <!-- Include Dependencies of GMaps for Rails gem -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-marker-clusterer/1.0.0/markerclusterer_compiled.js"></script>
-
 
   <%= javascript_tag do %>
      $(document).on('ready', function() {
         var handler = Gmaps.build('Google', { markers: { clusterer: undefined }});
-        handler.buildMap({ internal: { id: 'static-map' } }, function(){
+        handler.buildMap({
+        provider: {
+        scrollwheel: false,
+        zoomControl: false
+        },
+        internal: { id: 'static-map' } }, function(){
           markers = handler.addMarkers([
             {
               "lat": <%= @bed.latitude  %>,
@@ -74,4 +122,13 @@
 
   <% end %>
 <% end %>
+
+
+
+
+
+
+
+
+
 

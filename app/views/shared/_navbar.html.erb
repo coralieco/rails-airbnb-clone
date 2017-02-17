@@ -27,7 +27,7 @@
         </div>
       </div>
 
-      <%= link_to "My next beds", bookings_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "My stays", bookings_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <!-- Profile picture and dropdown -->
       <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
         <div class="badge-container">
@@ -39,7 +39,7 @@
 
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <%= cl_image_tag current_user.photo.path, crop: :fill, class: "avatar-navbar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li class="text-center">
               <%= link_to edit_user_registration_path do %>

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :beds do
     resources :bookings, only: [:create]
+
   end
   resources :bookings, only: [:index, :show, :destroy, :update]
 

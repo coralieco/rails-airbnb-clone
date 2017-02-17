@@ -1,35 +1,33 @@
 
-<div class="container">
+<div class="container"  style="background-image: url('/hearts.gif')">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <div class="form-login text-center">
+      <div class="form text-center" ;>
         <h2>Sign up</h2>
         <br>
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= f.error_notification %>
 
         <div class="form-group">
-         <%= f.input :first_name, required: true %>
-         <%= f.input :gender, required: true, collection: User::GENDER %>
-         <%= f.input :email, required: true, autofocus: true %>
-         <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-         <%= f.input :password_confirmation, required: true %>
-         <%=  f.input :gender_preferences, collection: User::GENDER %>
-         <%=  f.input :description %>
+         <p><%= f.input :first_name, required: true %></p>
+         <p><%= f.input :gender, required: true, collection: User::GENDER %></p>
+         <p><%= f.input :email, required: true, autofocus: true %></p>
+         <p><%= f.input :password, required: true, hint: ("#{@minimum_password_length}characters minimum" if @minimum_password_length) %></p>
+         <p><%= f.input :password_confirmation, required: true %></p>
+         <p><%=  f.input :gender_preferences, collection: User::GENDER %></p>
+         <p><%=  f.input :description %></p>
          <br>
-         <%=  f.input :photo, as: :attachinary, required: true %>
+         <p><%=  f.input :photo, as: :attachinary, required: true %></p>
        </div>
        <br>
        <div class="form-actions">
-       <%= f.button :submit, "Sign up", class:"btn btn-danger" %>
+       <%= f.button :submit, "Sign up", class:"btn btn-medium" %>
        </div>
        <br>
        <hr>
        <%= render "devise/shared/links" %>
        <% end %>
-
-
      </div>
    </div>
  </div>
-</div>
+
