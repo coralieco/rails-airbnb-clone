@@ -34,7 +34,12 @@ skip_before_action :authenticate_user!, only: [:new, :index]
     @booking = Booking.new
     @checkin = params['checkin_on']
     @checkout = params['checkout_on']
-
+    from = @checkin.split("/")
+    to = @checkout.split("/")
+    start = Date.new(from[2].to_f, from[1].to_f - 1, from[0].to_f)
+    finish = Date.new(to[2].to_f, to[1].to_f - 1, to[0].to_f)
+    @nb_days = (finish - start).to_f
+    @total_price = (@nb_days * @bed.price.to_f).round
     @bed = Bed.find(params[:id])
     @bookings = @bed.bookings
     @alert_message = "You are viewing the bed of #{@bed.user.first_name}"
