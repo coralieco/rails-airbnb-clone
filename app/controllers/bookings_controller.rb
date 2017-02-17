@@ -5,7 +5,6 @@ class BookingsController < ApplicationController
     @bed = Bed.find(params[:bed_id])
     @booking = Booking.new(booking_params)
     @booking.bed = @bed
-    @review = Review.new
     @booking.user = current_user
     @booking.status = "Pending host validation"
     @booking.value = (@booking.checkout_on - @booking.checkin_on).to_f * @booking.bed.price.to_f
@@ -18,6 +17,7 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = Booking.where(user_id: current_user.id)
+    @review = Review.new
   end
 
   def show
