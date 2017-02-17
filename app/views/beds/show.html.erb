@@ -83,11 +83,11 @@
           <div class="booking-card">
             <div >
             <p>From </p>
-            <%= f.text_field :checkin_on, class: "datepicker checkin_on", value: @checkin%>
+            <%= f.text_field :checkin_on, class: "datepicker checkin_on", value: @checkin, placeholder: "dd/mm/yyyy" %>
             </div>
             <div>
             <p> To </p>
-            <%= f.text_field :checkout_on, class: "datepicker checkout_on", value: @checkout %>
+            <%= f.text_field :checkout_on, class: "datepicker checkout_on", value: @checkout, placeholder: "dd/mm/yyyy" %>
             </div>
             <p> <strong>Total price: <span id="total_price"><%= @total_price %> €</span></strong></p>
             <%= f.submit "Book", class: "btn btn-danger"%>
