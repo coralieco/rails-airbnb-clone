@@ -11,7 +11,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to booking_path(@booking)
     else
-      redirect_to bed_path(@bed)x
+      redirect_to bed_path(@bed)
     end
   end
 
