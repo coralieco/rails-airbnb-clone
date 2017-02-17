@@ -21,20 +21,17 @@
               <%= link_to "See my beds", my_beds_path %>
             </li>
             <li class="text-center">
-              <%= link_to "Who wants to sleep with me", my_bookings_path %>
+              <%= link_to "Who wants to sleep with me  ", my_bookings_path%>
+              <div class="badge-container">
+              <div class="badge badge-red">N</div>
+              </div>
             </li>
           </ul>
         </div>
       </div>
 
       <%= link_to "My stays", bookings_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <!-- Profile picture and dropdown -->
-      <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
-        <div class="badge-container">
-          <i class="fa fa-envelope-o"></i>
-          <div class="badge badge-red">3</div>
-        </div>
-      <% end %>
+
 
 
       <div class="navbar-wagon-item">
