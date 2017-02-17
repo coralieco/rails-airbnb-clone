@@ -81,7 +81,27 @@
 <% content_for(:after_js) do %>
 
 
-    <script>
+  <script>
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google', { markers: { clusterer: undefined }});
+      handler.buildMap({
+        provider: {
+          scrollwheel: false,
+          zoomControl: false
+        },
+        internal: { id: 'static-map' }
+      }, function(){
+        markers = handler.addMarkers([
+          {
+            "lat": <%= @bed.latitude  %>,
+            "lng": <%= @bed.longitude %>,
+
+          },
+        ]);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        handler.getMap().setZoom(15);
+      });
       $(".checkin_on, .checkout_on").on("change", function(e) {
         var from = $(".checkin_on").val().split("/");
         var to = $(".checkout_on").val().split("/");
@@ -91,36 +111,9 @@
         var total_price = nb_days * <%= @bed.price %>;
         $("#total_price").html(total_price + " €");
       });
-    </script>
+    });
+  </script>
 
-    <!-- Include Dependencies of GMaps for Rails gem -->
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-marker-clusterer/1.0.0/markerclusterer_compiled.js"></script>
-
-  <%= javascript_tag do %>
-     $(document).on('ready', function() {
-        var handler = Gmaps.build('Google', { markers: { clusterer: undefined }});
-        handler.buildMap({
-        provider: {
-        scrollwheel: false,
-        zoomControl: false
-        },
-        internal: { id: 'static-map' } }, function(){
-          markers = handler.addMarkers([
-            {
-              "lat": <%= @bed.latitude  %>,
-              "lng": <%= @bed.longitude %>,
-
-            },
-          ]);
-          handler.bounds.extendWith(markers);
-          handler.fitMapToBounds();
-          handler.getMap().setZoom(15);
-        });
-      })
-
-  <% end %>
 <% end %>
 
 
