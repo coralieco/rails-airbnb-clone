@@ -12,15 +12,14 @@
 
       <div class="col-xs-12 col-sm-6">
         <div class="wagoncard showmaincard">
-          <div class="wagoncard-category"> <strong> <%= @bed.user.first_name %> </strong> </div>
-          <div class="wagoncard-detail">
-            <p>Sex: <strong> <%= @bed.user.gender %> </strong> </p>
-            <p>Interested in: <strong> <%= @bed.user.gender_preferences %> </strong> </p>
-          </div>
-          <div class="wagoncard-description">
-            <i class="fa fa-book" aria-hidden="true"></i>
-            <i>" <%= @bed.user.description %> "</i>
-          </div>
+            <div class="wagoncard-category"> <strong> <%= @bed.user.first_name %> </strong> </div>
+            <div class="wagoncard-detail">
+              <p>Sex: <strong> <%= @bed.user.gender %> </strong> </p>
+              <p>Interested in: <strong> <%= @bed.user.gender_preferences %> </strong> </p>
+              <i class="fa fa-book" aria-hidden="true"></i>
+              <i>" <%= @bed.user.description %> "</i>
+            </div>
+
           <%= cl_image_tag @bed.user.photo.path, width: 50, height: 50, class: "wagoncard-user avatar avatar-semi" %>
           <a class="wagoncard-link" href="#" ></a>
         </div>
@@ -32,7 +31,7 @@
     <div class="col-xs-12 col-sm-6">
 
       <p> <i class="fa fa-map-marker" aria-hidden="true"></i> <%= @bed.address %> <%= @bed.city %> <%= @bed.country %></p>
-      <p> <i class="fa fa-eur" aria-hidden="true"></i> <%= @bed.price %> ... but a lot of love</p>
+      <p> <i class="fa fa-eur" aria-hidden="true"></i> <%= @bed.price %> per night ... but so much love</p>
       <p> <strong>Description:</strong> </p>
       <p><%= @bed.description %></p>
       <div class = "equipment-div">
@@ -52,6 +51,14 @@
           <i class="fa fa-times pad" aria-hidden="true"></i>
         <% end %>
       </div>
+      <p><strong> <%= %>Reviews</strong></p>
+      <% @bookings.each do |booking|%>
+        <% if bookig.review %>
+          <%= booking.user.photo %>
+          <%= booking.review.rating %>
+          <%= booking.review.content %>
+        <% end %>
+      <% end %>
 
     </div>
 
