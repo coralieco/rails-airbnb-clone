@@ -5,6 +5,7 @@ class BookingsController < ApplicationController
     @bed = Bed.find(params[:bed_id])
     @booking = Booking.new(booking_params)
     @booking.bed = @bed
+    @review = Review.new
     @booking.user = current_user
     @booking.status = "Pending guest request"
     @booking.value = (@booking.checkout_on - @booking.checkin_on).to_f * @booking.bed.price.to_f
