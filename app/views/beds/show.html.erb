@@ -66,7 +66,7 @@
         </form> -->
 
         <%= simple_form_for [@bed, @booking] do |f| %>
-          <%= f.text_field :checkin_on, class: "datepicker checkin_on", value: @checkin%>
+          <%= f.text_field :checkin_on, class: "datepicker checkin_on", value: @checkin %>
           <%= f.text_field :checkout_on, class: "datepicker checkout_on", value: @checkout %>
           <p> <strong>Total price: <span id="total_price"></span></strong></p>
           <%= f.submit "Book", class: "btn btn-danger"%>
