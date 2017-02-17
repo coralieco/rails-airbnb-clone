@@ -34,7 +34,7 @@ skip_before_action :authenticate_user!, only: [:new, :index]
     @booking = Booking.new
     @checkin = params['checkin_on']
     @checkout = params['checkout_on']
-    if ((@checkin != "") && (@checkout != ""))
+    if ((!@checkin.blank?) && (!@checkout.blank?))
       from = @checkin.split("/")
       to = @checkout.split("/")
       start = Date.new(from[2].to_f, from[1].to_f - 1, from[0].to_f)
