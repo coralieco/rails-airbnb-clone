@@ -34,7 +34,7 @@
       <p>Your booking is confirmed</p>
       <%= link_to "Delete this booking", booking_path(booking), method: :destroy, class:"btn btn-danger", data: {confirm: "Are you sure"} %>
       <p>Make a review</p>
-      <%= render '../reviews/form', booking: booking, review: @review %>
+      <%= render 'reviews/form', booking: booking, review: @review %>
       <% end %>
     <% if booking.status == "Canceled" %>
       <p><%= booking.bed.user.first_name%> canceled your booking </p>

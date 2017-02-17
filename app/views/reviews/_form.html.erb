@@ -1,4 +1,4 @@
-<%= simple_form_for([ booking, review ], remote: true) do |form| %>
+<%= simple_form_for[ booking, review ] do |form| %>
   <%= form.input :content, as: :text %>
   <%= form.integer :rating%>
   <%= form.button :submit %>
