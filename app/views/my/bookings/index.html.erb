@@ -21,7 +21,7 @@
         <p> Dates : <%= booking.checkin_on %> and <%= booking.checkout_on %> </p>
         <p> On top of having a great night, you will make <%= booking.value %> € </p>
 
-      </div> <!-- end of product-body -->
+       <!-- end of product-body -->
 
       <ul class="list-inline product-controls hidden-sm hidden-xs">
         <li><%= link_to "Accept ", my_booking_path(booking, booking: {status: "Confirmed"}), method: :patch, class: "btn btn-success"%></li>
