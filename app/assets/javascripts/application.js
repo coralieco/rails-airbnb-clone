@@ -15,7 +15,7 @@
 $(document).ready(function() {
   $('.datepicker').datepicker({
     format: "dd/mm/yyyy",
-    weekStart: 1
+    weekStart: 1,
     autoclose: true
   });
 });
