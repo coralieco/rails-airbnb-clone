@@ -3,5 +3,6 @@ class PagesController < ApplicationController
 
   def home
     @bed = Bed.new
+    @beds = Bed.all
   end
 end
