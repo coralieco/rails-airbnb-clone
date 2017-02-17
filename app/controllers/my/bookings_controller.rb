@@ -5,8 +5,7 @@ class My::BookingsController < ApplicationController
 
   def update
     set_booking
-    @booking.status = "Confirmed"
-    @booking.save
+    @booking.update(set_params)
     redirect_to my_bookings_path
   end
 
@@ -15,6 +14,10 @@ class My::BookingsController < ApplicationController
 
   def set_booking
     @booking = Booking.find(params[:id])
+  end
+
+  def set_params
+    params.require(:booking).permit(:status)
   end
 
 end
